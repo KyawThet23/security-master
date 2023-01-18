@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html th:replace="~{layout/masterlayout :: layout(~{::main})}"
+        lang="en"  xmlns:th="http://www.thymeleaf.org">
+<body>
+
+  <main role="main">
+    <div class="container mt-5 p-5">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h3>Customer tables</h3>
+            </div>
+
+            <div class="container">
+              <div class="row m-5">
+                <div class="input-group">
+                  <form th:action="@{/customer/customers}">
+                    Filter: <input class="input-group-lg" type="text" name="name" id="name"
+                                   size="50" th:value="${name}" required />
+                    <input class="btn btn-outline-primary" type="submit" value="Search" />
+                    <a th:href="@{/customer/customers}" class="btn btn-outline-primary btn-default">
+                      Clear Search</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div th:replace="fragments/customer-table.html :: customerTable"></div>
+            </div>
+          </div>
+          <a th:href="@{/customer/customer-form}" class="btn btn-primary my-4">Create Customer</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
